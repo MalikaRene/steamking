@@ -1,0 +1,722 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Steam King — Royal Carpet Care</title>
+<template id="__bundler_thumbnail" data-bg-color="#F5EFE4">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" fill="#F5EFE4"/>
+    <circle cx="60" cy="62" r="36" fill="#E8B835"/>
+    <path d="M38 48 L46 36 L54 46 L60 30 L66 46 L74 36 L82 48 L80 64 L40 64 Z" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="40" y="64" width="40" height="6" rx="1.5" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2"/>
+    <circle cx="46" cy="36" r="2.5" fill="#F04EA6"/>
+    <circle cx="60" cy="30" r="2.5" fill="#F04EA6"/>
+    <circle cx="74" cy="36" r="2.5" fill="#F04EA6"/>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1B4FB8;
+    --blue-deep:#153B8C;
+    --pink:#F04EA6;
+    --pink-soft:#FBD4E7;
+    --cream:#F5EFE4;
+    --cream-2:#EDE5D4;
+    --gold:#E8B835;
+    --ink:#0E1B3D;
+    --white:#FFFDF8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .page{width:1280px;margin:0 auto;background:var(--cream);overflow:hidden}
+  h1,h2,h3,.display{font-family:"Archivo Black","Inter",sans-serif;font-weight:900;letter-spacing:-.01em;line-height:.98}
+
+  /* --- NAV --- */
+  nav.top{display:flex;align-items:center;justify-content:space-between;padding:22px 56px;background:var(--cream)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:54px;height:54px}
+  .brand-name{line-height:1}
+  .brand-name .sk{font-family:"Archivo Black",sans-serif;font-size:26px;color:var(--blue);letter-spacing:.02em}
+  .brand-name .tag{font-family:"Archivo Black",sans-serif;font-size:26px;color:var(--pink);letter-spacing:.02em}
+  .brand-name small{display:block;font-size:10px;letter-spacing:.32em;color:var(--ink);opacity:.55;margin-top:4px;font-weight:600}
+  .nav-links{display:flex;gap:44px;align-items:center}
+  .nav-links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px;position:relative}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:3px;background:var(--pink);border-radius:2px}
+  .book-btn{background:var(--pink);color:#fff;border:none;padding:14px 26px;border-radius:999px;font-weight:800;letter-spacing:.14em;font-size:13px;cursor:pointer;box-shadow:0 6px 0 #b8387c;transition:transform .1s}
+  .book-btn:hover{transform:translateY(1px);box-shadow:0 5px 0 #b8387c}
+
+  /* --- HERO --- */
+  .hero{position:relative;margin:0 24px;border-radius:28px;background:var(--blue);color:#fff;overflow:hidden;min-height:560px;padding:56px 64px}
+  .hero::before{content:none}
+  .hero::after{content:"";position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.06);border-radius:50%}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:999px;font-size:12px;letter-spacing:.28em;font-weight:700;margin-bottom:24px;text-transform:uppercase}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-size:76px;margin:0 0 20px;color:#fff}
+  .hero h1 .pk{color:var(--pink)}
+  .hero h1 .gd{color:var(--gold)}
+  .hero p.lede{font-size:19px;line-height:1.5;max-width:460px;margin:0 0 28px;opacity:.92;font-weight:400}
+  .bullets{list-style:none;padding:0;margin:0 0 36px;display:grid;gap:12px;max-width:380px}
+  .bullets li{display:flex;align-items:center;gap:14px;font-size:17px;font-weight:600}
+  .bullets li .chk{width:26px;height:26px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .cta-row{display:flex;align-items:center;gap:24px}
+  .cta{background:var(--pink);color:#fff;border:none;padding:18px 32px;border-radius:999px;font-weight:800;letter-spacing:.14em;font-size:14px;cursor:pointer;box-shadow:0 7px 0 #b8387c}
+  .cta-meta{font-size:13px;opacity:.75;line-height:1.35}
+  .cta-meta b{display:block;font-size:15px;opacity:1;font-weight:700}
+
+  .hero-art{position:relative;height:460px}
+  .hero-art .blob{position:absolute;inset:0;display:block}
+
+  /* decorative dots */
+  .dots{position:absolute;z-index:1}
+  .dots circle{fill:var(--pink)}
+  .dots.left{left:-6px;top:52%}
+  .dots.right{right:30px;top:20%}
+
+  /* --- SECTION TITLES --- */
+  .section{padding:80px 56px 40px}
+  .sec-title{display:flex;align-items:baseline;gap:18px;margin-bottom:36px}
+  .sec-title h2{font-size:44px;margin:0}
+  .sec-title .num{font-family:"Archivo Black",sans-serif;color:var(--pink);font-size:18px;letter-spacing:.2em}
+  .sec-title .line{flex:1;height:2px;background:var(--ink);opacity:.12}
+
+  /* --- SERVICES --- */
+  .services-wrap{padding:40px 56px 40px;position:relative}
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{background:#fff;border-radius:22px;padding:28px 26px 30px;position:relative;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);transition:transform .15s}
+  .svc:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink)}
+  .svc .illus{height:170px;background:var(--cream-2);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;overflow:hidden;position:relative}
+  .svc .tag-num{position:absolute;top:14px;right:14px;background:var(--pink);color:#fff;font-family:"Archivo Black";font-size:12px;padding:6px 10px;border-radius:999px;letter-spacing:.12em}
+  .svc h3{font-size:26px;margin:0 0 10px;color:var(--blue)}
+  .svc p{margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--ink);opacity:.78}
+  .svc .price{display:flex;align-items:baseline;gap:6px;border-top:1.5px dashed rgba(14,27,61,.2);padding-top:16px}
+  .svc .price .from{font-size:11px;letter-spacing:.22em;color:var(--ink);opacity:.55;font-weight:700;text-transform:uppercase}
+  .svc .price .amt{font-family:"Archivo Black";font-size:30px;color:var(--ink)}
+  .svc .price .per{font-size:12px;color:var(--ink);opacity:.55;font-weight:600}
+  .svc .arrow{margin-left:auto;width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff}
+
+  /* --- MARQUEE STRIP --- */
+  .strip{background:var(--ink);color:var(--cream);padding:22px 0;overflow:hidden;margin:20px 0 0}
+  .strip-inner{display:flex;gap:42px;white-space:nowrap;animation:slide 30s linear infinite;font-family:"Archivo Black";font-size:22px;letter-spacing:.04em}
+  .strip-inner span{display:inline-flex;align-items:center;gap:42px}
+  .strip-inner .star{color:var(--gold);font-size:24px}
+  .strip-inner .pk{color:var(--pink)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* --- ABOUT + BOOK --- */
+  .split{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;padding:0 56px 60px}
+  .about-card{background:#fff;border-radius:22px;padding:36px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .about-card h2{font-size:38px;margin:0 0 8px;color:var(--ink)}
+  .about-card h2 .pk{color:var(--pink)}
+  .about-meta{font-size:12px;letter-spacing:.28em;color:var(--pink);font-weight:800;margin-bottom:18px;text-transform:uppercase}
+  .about-card p{font-size:15px;line-height:1.6;color:var(--ink);opacity:.82;margin:0 0 18px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 24px}
+  .stat{background:var(--cream);border-radius:14px;padding:14px;border:1.5px solid var(--ink)}
+  .stat .big{font-family:"Archivo Black";font-size:30px;color:var(--blue);line-height:1}
+  .stat .lbl{font-size:11px;letter-spacing:.16em;color:var(--ink);opacity:.7;margin-top:6px;font-weight:700;text-transform:uppercase}
+  .guarantee{display:flex;gap:14px;align-items:center;background:var(--blue);color:#fff;padding:14px 18px;border-radius:14px}
+  .guarantee .seal{width:44px;height:44px;flex-shrink:0}
+  .guarantee b{display:block;font-family:"Archivo Black";font-size:15px;letter-spacing:.04em}
+  .guarantee span{font-size:12.5px;opacity:.85}
+
+  .book-card{background:var(--blue);color:#fff;border-radius:22px;padding:36px;position:relative;overflow:hidden;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .book-card::before{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;background:rgba(240,78,166,.3);border-radius:50%}
+  .book-card h2{font-size:34px;margin:0 0 4px;position:relative}
+  .book-card h2 .pk{color:var(--pink)}
+  .book-card .sub{font-size:13.5px;opacity:.85;margin-bottom:22px;position:relative}
+  .stepper{display:flex;align-items:center;gap:8px;margin-bottom:22px;position:relative}
+  .step{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-family:"Archivo Black";font-size:13px;color:rgba(255,255,255,.5)}
+  .step.active{background:var(--pink);color:#fff;box-shadow:0 0 0 4px rgba(240,78,166,.25)}
+  .step.done{background:var(--gold);color:var(--ink)}
+  .step-line{flex:1;height:2px;background:rgba(255,255,255,.2);border-radius:2px}
+  .step-line.done{background:var(--gold)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;position:relative}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:11px;letter-spacing:.2em;font-weight:700;opacity:.75;text-transform:uppercase}
+  .field input,.field select{background:#fff;border:none;padding:13px 14px;border-radius:10px;font-family:inherit;font-size:14px;color:var(--ink);font-weight:500;border:2px solid transparent}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--pink)}
+  .svc-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pill{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:10px 8px;border-radius:10px;font-size:12.5px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s}
+  .pill.sel{background:var(--pink);border-color:var(--pink)}
+  .quote-btn{width:100%;margin-top:18px;background:var(--gold);color:var(--ink);border:none;padding:16px;border-radius:12px;font-family:"Archivo Black";letter-spacing:.14em;font-size:14px;cursor:pointer;box-shadow:0 5px 0 #a88318;position:relative}
+  .quote-total{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.25);font-size:13px;position:relative}
+  .quote-total b{font-family:"Archivo Black";font-size:22px;color:var(--gold)}
+
+  /* --- TESTIMONIAL --- */
+  .testi{padding:20px 56px 80px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tcard{background:#fff;border-radius:20px;padding:26px;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+  .tcard .stars{color:var(--gold);font-size:16px;margin-bottom:10px;letter-spacing:2px}
+  .tcard p{font-size:15px;line-height:1.55;margin:0 0 18px;color:var(--ink)}
+  .tcard .who{display:flex;align-items:center;gap:12px}
+  .tcard .av{width:42px;height:42px;border-radius:50%;background:var(--pink-soft);display:flex;align-items:center;justify-content:center;font-family:"Archivo Black";color:var(--pink);font-size:14px}
+  .tcard .who .name{font-weight:700;font-size:14px}
+  .tcard .who .role{font-size:12px;opacity:.6}
+
+  /* --- FOOTER --- */
+  footer{background:var(--pink);color:#fff;padding:56px 56px 28px;position:relative;overflow:hidden}
+  footer::before{content:"";position:absolute;left:-40px;bottom:-40px;width:140px;height:140px;background:rgba(255,255,255,.08);border-radius:50%}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;position:relative}
+  .foot-brand .bname{font-family:"Archivo Black";font-size:28px;letter-spacing:.02em}
+  .foot-brand .bname .w{color:#fff}
+  .foot-brand p{font-size:14px;opacity:.9;line-height:1.5;margin:14px 0 18px;max-width:280px}
+  .foot-brand .socials{display:flex;gap:10px}
+  .soc{width:38px;height:38px;border-radius:10px;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:800;font-size:13px}
+  .fcol h4{font-family:"Archivo Black";font-size:14px;letter-spacing:.18em;margin:0 0 14px;text-transform:uppercase}
+  .fcol ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .fcol a,.fcol li{color:#fff;text-decoration:none;font-size:14px;opacity:.92;font-weight:500}
+  .fcol a:hover{opacity:1;text-decoration:underline}
+  .copy{margin-top:40px;padding-top:20px;border-top:1.5px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;font-size:12px;opacity:.85;position:relative}
+
+  /* hero cleaner art */
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+</style>
+</head>
+<body data-cc-id="cc-1" style="cursor: crosshair;">
+<div class="page" data-screen-label="Steam King Landing">
+
+  <!-- NAV -->
+  <nav class="top" data-cc-id="cc-9">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 60 60" fill="none">
+        <!-- crown -->
+        <path d="M10 22 L18 14 L24 22 L30 10 L36 22 L42 14 L50 22 L48 36 L12 36 Z" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2" stroke-linejoin="round"></path>
+        <circle cx="18" cy="14" r="2.4" fill="#F04EA6"></circle>
+        <circle cx="30" cy="10" r="2.4" fill="#E8B835"></circle>
+        <circle cx="42" cy="14" r="2.4" fill="#F04EA6"></circle>
+        <rect x="12" y="36" width="36" height="6" rx="1.5" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2"></rect>
+        <!-- steam -->
+        <path d="M20 48 Q22 44 20 40" stroke="#0E1B3D" stroke-width="2" stroke-linecap="round" fill="none"></path>
+        <path d="M30 50 Q32 46 30 42" stroke="#0E1B3D" stroke-width="2" stroke-linecap="round" fill="none"></path>
+        <path d="M40 48 Q42 44 40 40" stroke="#0E1B3D" stroke-width="2" stroke-linecap="round" fill="none"></path>
+      </svg>
+      <div class="brand-name">
+        <span class="sk">STEAM</span> <span class="tag">KING</span>
+        <small data-cc-id="cc-8" style="">ROYAL CARPET CARE&nbsp;</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <button class="book-btn">BOOK NOW →</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" data-cc-id="cc-3">
+    <!-- Decorative dots -->
+    <svg class="dots left" width="60" height="80"><g>
+      <circle cx="6" cy="6" r="4"></circle><circle cx="22" cy="6" r="4"></circle><circle cx="38" cy="6" r="4"></circle>
+      <circle cx="6" cy="22" r="4"></circle><circle cx="22" cy="22" r="4"></circle><circle cx="38" cy="22" r="4"></circle>
+      <circle cx="6" cy="38" r="4"></circle><circle cx="22" cy="38" r="4"></circle><circle cx="38" cy="38" r="4"></circle>
+      <circle cx="6" cy="54" r="4"></circle><circle cx="22" cy="54" r="4"></circle><circle cx="38" cy="54" r="4"></circle>
+    </g></svg>
+
+    <div class="hero-grid" data-cc-id="cc-2">
+      <div class="hero-copy" data-cc-id="cc-10">
+        <h1 data-cc-id="cc-5" style="">RULE OVER<br><span class="pk">STAINS.</span> REIGN<br>IN <span class="gd">FRESH</span> CARPETS.</h1>
+        <p class="lede" data-cc-id="cc-6" style="">Hot-steam extraction, deep shampoo, and pet-safe odor treatment.</p>
+        <ul class="bullets">
+          <li data-cc-id="cc-7" style=""><span class="chk">
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>220°F steam</li>
+          <li><span class="chk">
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span> Dries in 4 hours — guaranteed</li>
+          <li><span class="chk">
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span> Pet &amp; baby safe formulas</li>
+        </ul>
+        <div class="cta-row">
+          <button class="cta" data-cc-id="cc-2" style="">SCHEDULE</button>
+          <div class="cta-meta"><b>(555) STEAM-99</b>Open 7am–9pm · 7 days</div>
+        </div>
+      </div>
+
+      <!-- Hero illustration: user-provided cleaning trio artwork -->
+      <div class="hero-art">
+        <img src="assets/hero-cleaning-trio.png" alt="Vacuum, dustpan and sudsy bucket" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0px;" data-cc-id="cc-1">
+        <svg style="display:none" viewBox="0 0 520 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="280" cy="240" rx="210" ry="170" fill="#E8B835"></ellipse>
+          <!-- inner cream arc -->
+          <path d="M120 320 Q200 380 320 360" stroke="#F5EFE4" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" fill="none"></path>
+
+          <!-- Steam cleaner body -->
+          <g>
+            <!-- hose -->
+            <path d="M180 80 Q140 140 190 200 Q230 240 310 220" stroke="#0E1B3D" stroke-width="4" fill="none" stroke-linecap="round"></path>
+            <path d="M180 80 Q140 140 190 200 Q230 240 310 220" stroke="#F04EA6" stroke-width="12" fill="none" stroke-linecap="round" opacity=".9" data-cc-id="cc-3"></path>
+            <!-- handle -->
+            <rect x="160" y="60" width="40" height="40" rx="6" fill="#F04EA6" stroke="#0E1B3D" stroke-width="3"></rect>
+            <rect x="168" y="68" width="24" height="8" rx="2" fill="#FBD4E7"></rect>
+
+            <!-- tank body -->
+            <g transform="translate(260 170)">
+              <rect x="0" y="0" width="140" height="160" rx="18" fill="#F04EA6" stroke="#0E1B3D" stroke-width="3.5"></rect>
+              <rect x="10" y="12" width="120" height="80" rx="10" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="3"></rect>
+              <!-- gauge -->
+              <circle cx="70" cy="52" r="26" fill="#F5EFE4" stroke="#0E1B3D" stroke-width="3"></circle>
+              <circle cx="70" cy="52" r="4" fill="#0E1B3D"></circle>
+              <line x1="70" y1="52" x2="84" y2="38" stroke="#F04EA6" stroke-width="3" stroke-linecap="round"></line>
+              <!-- meter ticks -->
+              <line x1="70" y1="32" x2="70" y2="36" stroke="#0E1B3D" stroke-width="2"></line>
+              <line x1="90" y1="52" x2="86" y2="52" stroke="#0E1B3D" stroke-width="2"></line>
+              <line x1="50" y1="52" x2="54" y2="52" stroke="#0E1B3D" stroke-width="2"></line>
+              <!-- label -->
+              <rect x="20" y="110" width="100" height="34" rx="6" fill="#0E1B3D"></rect>
+              <text x="70" y="133" text-anchor="middle" fill="#E8B835" font-family="Archivo Black" font-size="18" letter-spacing="2">STEAM KING</text>
+              <!-- wheels -->
+              <circle cx="20" cy="160" r="12" fill="#0E1B3D"></circle>
+              <circle cx="20" cy="160" r="4" fill="#F5EFE4"></circle>
+              <circle cx="120" cy="160" r="12" fill="#0E1B3D"></circle>
+              <circle cx="120" cy="160" r="4" fill="#F5EFE4"></circle>
+            </g>
+
+            <!-- crown on top of tank -->
+            <g transform="translate(282 138)">
+              <path d="M4 30 L14 14 L24 26 L36 8 L48 26 L58 14 L68 30 L66 42 L6 42 Z" fill="#E8B835" stroke="#0E1B3D" stroke-width="3" stroke-linejoin="round"></path>
+              <rect x="6" y="42" width="60" height="6" rx="1.5" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2.5"></rect>
+              <circle cx="14" cy="14" r="3" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2"></circle>
+              <circle cx="36" cy="8" r="3" fill="#F5EFE4" stroke="#0E1B3D" stroke-width="2"></circle>
+              <circle cx="58" cy="14" r="3" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2"></circle>
+            </g>
+
+            <!-- wand + nozzle -->
+            <g>
+              <line x1="310" y1="220" x2="410" y2="360" stroke="#0E1B3D" stroke-width="4"></line>
+              <line x1="310" y1="220" x2="410" y2="360" stroke="#1B4FB8" stroke-width="10" stroke-linecap="round"></line>
+              <rect x="395" y="345" width="60" height="34" rx="6" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="3" transform="rotate(35 425 362)"></rect>
+              <rect x="438" y="370" width="36" height="10" rx="2" fill="#F5EFE4" stroke="#0E1B3D" stroke-width="2.5" transform="rotate(35 456 375)"></rect>
+            </g>
+
+            <!-- steam puffs -->
+            <g fill="#F5EFE4" opacity=".95" stroke="#1B4FB8" stroke-width="2">
+              <circle cx="475" cy="395" r="14"></circle>
+              <circle cx="495" cy="375" r="9"></circle>
+              <circle cx="460" cy="415" r="8"></circle>
+              <circle cx="445" cy="385" r="6"></circle>
+            </g>
+
+            <!-- sparkles -->
+            <g stroke="#FFFDF8" stroke-width="3" stroke-linecap="round">
+              <path d="M220 140 L220 155 M212 147 L228 147"></path>
+              <path d="M420 180 L420 192 M414 186 L426 186"></path>
+              <path d="M130 280 L130 290 M125 285 L135 285"></path>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="strip">
+    <div class="strip-inner">
+      <span>
+        STEAM CLEAN <span class="star">✦</span> SHAMPOO <span class="pk">♕</span> DEEP EXTRACT <span class="star">✦</span> PET ODOR <span class="pk">♕</span> TILE &amp; GROUT <span class="star">✦</span> CARPET CARE <span class="pk">♕</span>
+        STEAM CLEAN <span class="star">✦</span> SHAMPOO <span class="pk">♕</span> DEEP EXTRACT <span class="star">✦</span> PET ODOR <span class="pk">♕</span> TILE &amp; GROUT <span class="star">✦</span> CARPET CARE <span class="pk">♕</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-wrap">
+    <div class="sec-title">
+      <span class="num">— 01 /</span>
+      <h2>The Royal Service Menu</h2>
+      <span class="line"></span>
+      <span class="num">SIX TREATMENTS</span>
+    </div>
+    <div class="services">
+      <!-- card 1 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">01</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="90" rx="70" ry="16" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- bottle -->
+            <rect x="62" y="40" width="52" height="70" rx="8" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="74" y="28" width="28" height="14" rx="3" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="68" y="64" width="40" height="22" rx="3" fill="#F5EFE4" stroke="#0E1B3D" stroke-width="2"></rect>
+            <text x="88" y="80" text-anchor="middle" font-family="Archivo Black" font-size="10" fill="#1B4FB8">SHAMPOO</text>
+            <!-- bubbles -->
+            <circle cx="130" cy="50" r="10" fill="#F5EFE4" stroke="#1B4FB8" stroke-width="2"></circle>
+            <circle cx="145" cy="65" r="7" fill="#F5EFE4" stroke="#1B4FB8" stroke-width="2"></circle>
+            <circle cx="38" cy="60" r="8" fill="#F5EFE4" stroke="#1B4FB8" stroke-width="2"></circle>
+            <path d="M30 110 Q40 100 50 110" stroke="#0E1B3D" stroke-width="2" fill="none"></path>
+            <path d="M120 112 Q135 102 150 112" stroke="#0E1B3D" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+        <h3>Royal Shampoo</h3>
+        <p>Low-moisture shampoo lifts everyday grime without soaking the fibers. Back to walkable in 90 minutes.</p>
+        <div class="price">
+          <span class="from">FROM</span>
+          <span class="amt">$89</span>
+          <span class="per">/ room</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- card 2 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">02</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="100" rx="70" ry="12" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- steam machine -->
+            <rect x="50" y="50" width="74" height="50" rx="8" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="60" y="58" width="28" height="22" rx="3" fill="#F5EFE4" stroke="#0E1B3D" stroke-width="2"></rect>
+            <circle cx="108" cy="69" r="8" fill="#E8B835" stroke="#0E1B3D" stroke-width="2"></circle>
+            <rect x="98" y="100" width="28" height="10" rx="2" fill="#0E1B3D"></rect>
+            <line x1="124" y1="70" x2="152" y2="50" stroke="#0E1B3D" stroke-width="3"></line>
+            <rect x="148" y="40" width="18" height="16" rx="3" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2"></rect>
+            <!-- steam puffs -->
+            <g fill="#F5EFE4" stroke="#1B4FB8" stroke-width="2">
+              <circle cx="40" cy="30" r="10"></circle>
+              <circle cx="58" cy="22" r="7"></circle>
+              <circle cx="70" cy="36" r="6"></circle>
+              <circle cx="28" cy="46" r="6"></circle>
+            </g>
+          </svg>
+        </div>
+        <h3>Hot Steam Reign</h3>
+        <p>Truck-mounted 220°F extraction kills allergens and dust mites on contact. Our flagship service.</p>
+        <div class="price">
+          <span class="from">FROM</span>
+          <span class="amt">$119</span>
+          <span class="per">/ room</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- card 3 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">03</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="100" rx="70" ry="12" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- bucket -->
+            <path d="M46 52 L134 52 L126 108 L54 108 Z" fill="#F04EA6" stroke="#0E1B3D" stroke-width="2.5"></path>
+            <rect x="44" y="48" width="92" height="10" rx="2" fill="#FBD4E7" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <path d="M60 48 Q90 26 120 48" stroke="#0E1B3D" stroke-width="2.5" fill="none"></path>
+            <!-- suds -->
+            <g fill="#F5EFE4" stroke="#1B4FB8" stroke-width="2">
+              <circle cx="68" cy="42" r="10"></circle>
+              <circle cx="88" cy="34" r="12"></circle>
+              <circle cx="110" cy="40" r="10"></circle>
+              <circle cx="98" cy="48" r="7"></circle>
+              <circle cx="76" cy="52" r="6"></circle>
+            </g>
+            <!-- sparkles -->
+            <g stroke="#E8B835" stroke-width="2.5" stroke-linecap="round">
+              <path d="M30 60 L30 68 M26 64 L34 64"></path>
+              <path d="M150 80 L150 88 M146 84 L154 84"></path>
+            </g>
+          </svg>
+        </div>
+        <h3>Deep Coronation</h3>
+        <p>Pre-spray, agitate, hot rinse, and groom. Our most thorough restoration for heavily soiled carpets.</p>
+        <div class="price">
+          <span class="from">FROM</span>
+          <span class="amt">$179</span>
+          <span class="per">/ room</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- card 4 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">04</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="100" rx="70" ry="12" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- sofa -->
+            <rect x="30" y="60" width="120" height="40" rx="10" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="30" y="50" width="22" height="50" rx="8" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="128" y="50" width="22" height="50" rx="8" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2.5"></rect>
+            <rect x="56" y="66" width="30" height="24" rx="5" fill="#FBD4E7" stroke="#0E1B3D" stroke-width="2"></rect>
+            <rect x="94" y="66" width="30" height="24" rx="5" fill="#FBD4E7" stroke="#0E1B3D" stroke-width="2"></rect>
+            <line x1="38" y1="100" x2="38" y2="112" stroke="#0E1B3D" stroke-width="3"></line>
+            <line x1="142" y1="100" x2="142" y2="112" stroke="#0E1B3D" stroke-width="3"></line>
+            <g stroke="#E8B835" stroke-width="2.5" stroke-linecap="round">
+              <path d="M70 38 L70 48 M65 43 L75 43"></path>
+              <path d="M110 34 L110 44 M105 39 L115 39"></path>
+            </g>
+          </svg>
+        </div>
+        <h3>Upholstery Guard</h3>
+        <p>Sofas, loveseats, and dining chairs. Spot-testing first, gentle on velvet, leather, and microfiber.</p>
+        <div class="price">
+          <span class="from">FROM</span>
+          <span class="amt">$149</span>
+          <span class="per">/ piece</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- card 5 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">05</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="100" rx="70" ry="12" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- paw -->
+            <g fill="#F04EA6" stroke="#0E1B3D" stroke-width="2.5">
+              <ellipse cx="90" cy="82" rx="30" ry="22"></ellipse>
+              <circle cx="62" cy="52" r="10"></circle>
+              <circle cx="118" cy="52" r="10"></circle>
+              <circle cx="80" cy="38" r="9"></circle>
+              <circle cx="100" cy="38" r="9"></circle>
+            </g>
+            <g fill="#FBD4E7" stroke="#0E1B3D" stroke-width="1.5">
+              <ellipse cx="82" cy="78" rx="5" ry="7"></ellipse>
+              <ellipse cx="98" cy="78" rx="5" ry="7"></ellipse>
+              <ellipse cx="90" cy="90" rx="6" ry="5"></ellipse>
+            </g>
+            <g stroke="#E8B835" stroke-width="2.5" stroke-linecap="round">
+              <path d="M36 60 L36 70 M31 65 L41 65"></path>
+              <path d="M146 70 L146 80 M141 75 L151 75"></path>
+            </g>
+          </svg>
+        </div>
+        <h3>Pet Decree</h3>
+        <p>Enzymatic odor neutralizer eliminates pet accidents at the source. Safe for paws and people.</p>
+        <div class="price">
+          <span class="from">ADD-ON</span>
+          <span class="amt">$39</span>
+          <span class="per">/ room</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- card 6 -->
+      <div class="svc">
+        <div class="illus">
+          <span class="tag-num">06</span>
+          <svg width="180" height="140" viewBox="0 0 180 140">
+            <ellipse cx="90" cy="100" rx="70" ry="12" fill="#1B4FB8" opacity=".12"></ellipse>
+            <!-- tile grid -->
+            <g stroke="#0E1B3D" stroke-width="2.5" fill="#F5EFE4">
+              <rect x="38" y="40" width="24" height="24" rx="3"></rect>
+              <rect x="66" y="40" width="24" height="24" rx="3"></rect>
+              <rect x="94" y="40" width="24" height="24" rx="3"></rect>
+              <rect x="122" y="40" width="24" height="24" rx="3"></rect>
+              <rect x="38" y="68" width="24" height="24" rx="3"></rect>
+              <rect x="66" y="68" width="24" height="24" rx="3" fill="#F04EA6"></rect>
+              <rect x="94" y="68" width="24" height="24" rx="3"></rect>
+              <rect x="122" y="68" width="24" height="24" rx="3" fill="#1B4FB8"></rect>
+            </g>
+            <g stroke="#E8B835" stroke-width="2.5" stroke-linecap="round">
+              <path d="M24 50 L24 60 M19 55 L29 55"></path>
+              <path d="M158 80 L158 90 M153 85 L163 85"></path>
+            </g>
+          </svg>
+        </div>
+        <h3>Tile &amp; Grout Crowning</h3>
+        <p>High-pressure grout restoration. Watch years of buildup lift in one visit. Sealing available.</p>
+        <div class="price">
+          <span class="from">FROM</span>
+          <span class="amt">$0.65</span>
+          <span class="per">/ sq ft</span>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + BOOKING -->
+  <section class="split">
+    <!-- About -->
+    <div class="about-card">
+      <div class="about-meta">— 02 / Our Story</div>
+      <h2>A decade of<br>dethroning <span class="pk">dirt.</span></h2>
+      <p style="margin-top:18px">Steam King started in 2014 out of a single van in the Capital Region. Twelve years later, we're a five-truck crew of IICRC-certified technicians who treat every job like a royal audience — because your carpets deserve nothing less.</p>
+      <p>We're family-owned, fully insured, and quietly obsessive about the details our competitors skip: pre-vacuuming, corner detailing, and a final groom that leaves your carpet standing at attention.</p>
+
+      <div class="stats">
+        <div class="stat"><div class="big">12K+</div><div class="lbl">Homes Served</div></div>
+        <div class="stat"><div class="big">4.9★</div><div class="lbl">Google Rating</div></div>
+        <div class="stat"><div class="big">100%</div><div class="lbl">Satisfaction</div></div>
+      </div>
+
+      <div class="guarantee">
+        <svg class="seal" viewBox="0 0 44 44">
+          <circle cx="22" cy="22" r="20" fill="#E8B835" stroke="#0E1B3D" stroke-width="2"></circle>
+          <path d="M12 22 L19 29 L32 15" stroke="#0E1B3D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <div>
+          <b>THE 7-DAY ROYAL WARRANTY</b>
+          <span>Not satisfied? We re-clean for free — or your money back.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking -->
+    <div class="book-card">
+      <div class="about-meta" style="color:var(--gold);position:relative">— 03 / Book It</div>
+      <h2>Request your<br><span class="pk">free quote.</span></h2>
+      <p class="sub">Five questions. Two minutes. Zero obligation.</p>
+
+      <div class="stepper">
+        <div class="step done">✓</div>
+        <div class="step-line done"></div>
+        <div class="step done">✓</div>
+        <div class="step-line done"></div>
+        <div class="step active">3</div>
+        <div class="step-line"></div>
+        <div class="step">4</div>
+        <div class="step-line"></div>
+        <div class="step">5</div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Full Name</label>
+          <input value="Alex Morgan">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input value="(555) 218-4029">
+        </div>
+        <div class="field full">
+          <label>Service Address</label>
+          <input value="427 Maple Ridge Drive, Albany NY 12203">
+        </div>
+        <div class="field">
+          <label>Preferred Date</label>
+          <input value="Sat, Apr 25, 2026">
+        </div>
+        <div class="field">
+          <label>Time Window</label>
+          <select><option>9:00 AM – 11:00 AM</option></select>
+        </div>
+        <div class="field full">
+          <label>Service Type</label>
+          <div class="svc-pick">
+            <div class="pill">Shampoo</div>
+            <div class="pill sel">Hot Steam</div>
+            <div class="pill">Deep Clean</div>
+            <div class="pill">Upholstery</div>
+            <div class="pill">Pet Odor</div>
+            <div class="pill">Tile &amp; Grout</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-total">
+        <span>Estimated total · 3 rooms · pet treatment</span>
+        <b>$396</b>
+      </div>
+
+      <button class="quote-btn">LOCK IN MY ROYAL QUOTE →</button>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi">
+    <div class="sec-title">
+      <span class="num">— 04 /</span>
+      <h2>What the court says.</h2>
+      <span class="line"></span>
+      <span class="num">417 REVIEWS</span>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"Two labs, three kids, and a beige carpet. Steam King rescued it from certain death. You can't even tell where the red wine was."</p>
+        <div class="who">
+          <div class="av">MR</div>
+          <div><div class="name">Marisol R.</div><div class="role">Delmar, NY</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"On time. Boot covers. Moved the furniture back. Left a thank-you card. The carpet looks new — but honestly I'd hire them again just for the manners."</p>
+        <div class="who">
+          <div class="av" style="background:#1B4FB8;color:#fff">DJ</div>
+          <div><div class="name">David J.</div><div class="role">Clifton Park, NY</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"I've hired four different cleaners over eight years. These are the only ones who actually got the basement stairs clean. Hiring them for the office next."</p>
+        <div class="who">
+          <div class="av" style="background:#E8B835">SP</div>
+          <div><div class="name">Sarah P.</div><div class="role">Saratoga Springs</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div style="display:flex;align-items:center;gap:12px">
+          <svg width="46" height="46" viewBox="0 0 60 60">
+            <path d="M10 22 L18 14 L24 22 L30 10 L36 22 L42 14 L50 22 L48 36 L12 36 Z" fill="#FFFDF8" stroke="#0E1B3D" stroke-width="2" stroke-linejoin="round"></path>
+            <circle cx="18" cy="14" r="2.4" fill="#E8B835"></circle>
+            <circle cx="30" cy="10" r="2.4" fill="#1B4FB8"></circle>
+            <circle cx="42" cy="14" r="2.4" fill="#E8B835"></circle>
+            <rect x="12" y="36" width="36" height="6" rx="1.5" fill="#1B4FB8" stroke="#0E1B3D" stroke-width="2"></rect>
+          </svg>
+          <div class="bname"><span class="w">STEAM</span> KING</div>
+        </div>
+        <p>Royal carpet care for the Capital Region. Family-owned, fully insured, IICRC-certified since 2014.</p>
+        <div class="socials">
+          <a class="soc" href="#">IG</a>
+          <a class="soc" href="#">FB</a>
+          <a class="soc" href="#">TT</a>
+          <a class="soc" href="#">YT</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Carpet Steam</a></li>
+          <li><a href="#">Shampoo</a></li>
+          <li><a href="#">Deep Clean</a></li>
+          <li><a href="#">Upholstery</a></li>
+          <li><a href="#">Tile &amp; Grout</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <ul>
+          <li>(555) STEAM-99</li>
+          <li>hello@steamking.co</li>
+          <li>1412 Delaware Ave<br>Albany, NY 12209</li>
+          <li>Mon–Sun · 7a–9p</li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers (Hiring!)</a></li>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <div>© 2026 Steam King LLC · Royal carpet care, crowned fresh.</div>
+      <div>IICRC # 224001 · NY DOS # 5544321</div>
+    </div>
+  </footer>
+
+</div>
+
+
+</body></html>
